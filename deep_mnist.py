@@ -41,6 +41,7 @@ b_conv2 = bias_variable([64])
 h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)
 h_pool2 = max_pool_kxk(h_conv2, 2)
 
+# after doing two max-pooling operation of 2x2 now input size is 7x7 (28x28 -> 14x14 -> 7x7)
 W_fc_1 = weight_variable([7 * 7 * 64, 1024])
 b_fc_1 = bias_variable([1024])
 
