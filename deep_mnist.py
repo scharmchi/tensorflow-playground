@@ -1,3 +1,5 @@
+# based on insights I got from here: https://www.tensorflow.org/versions/r0.8/tutorials/mnist/pros/index.html
+
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
 

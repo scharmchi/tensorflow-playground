@@ -1,3 +1,5 @@
+# based on insights I got from here: https://github.com/aymericdamien/TensorFlow-Examples
+
 import tensorflow as tf
 import numpy as np
 from tensorflow.examples.tutorials.mnist import input_data
