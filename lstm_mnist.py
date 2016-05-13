@@ -31,20 +31,20 @@ b_out = tf.Variable(tf.random_normal([n_classes], stddev=0.01))
 # right now the shape is [batch_size, num_time_steps, num_inputs]
 # so now we permute num_time_steps and batch_size so we get the shape
 # [num_time_steps, batch_size, num_inputs]
-x_fuck = tf.transpose(x, [1, 0, 2])
+x_censored = tf.transpose(x, [1, 0, 2])
 
 # and now prepare it for input to hidden so that it becomes of shape
 # [num_time_steps * batch_size, num_inputs]
-x_fuck = tf.reshape(x_fuck, [-1, x_t_input_vec_size])
+x_censored = tf.reshape(x_censored, [-1, x_t_input_vec_size])
 
-x_fuck = tf.matmul(x_fuck, W_hidden) + b_hidden
+x_censored = tf.matmul(x_censored, W_hidden) + b_hidden
 
 lstm_cell = tf.nn.rnn_cell.BasicLSTMCell(n_hidden, forget_bias=1.0)
 
 # Split data because rnn cell needs a list of inputs for the RNN inner loop
-x_fuck = tf.split(0, time_step_size, x_fuck)
+x_censored = tf.split(0, time_step_size, x_censored)
 
-outputs, states = tf.nn.rnn(lstm_cell, x_fuck, initial_state=init_state)
+outputs, states = tf.nn.rnn(lstm_cell, x_censored, initial_state=init_state)
 pred_vec = tf.matmul(outputs[-1], W_out) + b_out
 
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(pred_vec, y))
