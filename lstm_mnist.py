@@ -10,11 +10,6 @@ n_hidden = 128
 n_classes = 10
 
 mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
-# trainX, trainY, testX, testY = mnist.train.images, mnist.train.labels, mnist.test.images, mnist.test.labels
-# print(len(trainX[0]))
-# reshape from 784 -> 28x28
-# trainX = trainX.reshape(-1, 28, 28)
-# testX = testX.reshape(-1, 28, 28)
 
 # I guess time_step_size is like rows of the image and
 # input vec is each row which has the size equal to number of columns
